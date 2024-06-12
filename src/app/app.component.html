@@ -1,37 +1,53 @@
-<mat-toolbar color="primary">
-  <span>Produtos</span>
-  <span class="example-spacer"></span>
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<mat-toolbar color="primary" id="nav">
+  <div>Produtos</div>
   <div id="icons">
     <mat-icon>search</mat-icon>
     <mat-icon matBadge="5" matBadgeSize="small" matBadgeColor="warn">notifications</mat-icon>
-    <mat-icon matBadge="2" matBadgeSize="small" matBadgeColor="warn">message</mat-icon>
+    <mat-icon matBadge="2" matBadgeSize="small" matBadgeColor="warn">mail</mat-icon>
     <mat-icon matBadge="3" matBadgeSize="small" matBadgeColor="warn">format_list_numbered</mat-icon>
-    <mat-icon>face</mat-icon>
+    <span>|</span>
+    <mat-icon class="icon" matListIcon>account_circle</mat-icon>
+    <span>Time A</span>
   </div>
-  <span>Time A</span>
 </mat-toolbar>
 
 <mat-sidenav-container class="example-container">
   <mat-sidenav mode="side" opened>
     <mat-nav-list class="lista">
       <mat-list-item routerLink="/dashboard" routerLinkActive="active">
-        <p class="home" matLine><mat-icon class="icon" matListIcon>dashboard</mat-icon>Dashboard</p>
+        <p class="home" matLine><mat-icon class="icon" matListIcon>dashboard</mat-icon> Dashboard</p>
       </mat-list-item>
+      <span id="border">
+        <p id="greySidebar">SIMPLE SCREENS</p>
+      </span>
       <mat-list-item routerLink="/grupo" routerLinkActive="active">
-        <p matLine>Grupo</p>
+        <p class="home" matLine><mat-icon class="icon" matListIcon>palette</mat-icon> Grupo</p>
       </mat-list-item>
       <mat-list-item routerLink="/subgrupo" routerLinkActive="active">
-        <h4 matLine>Subgrupo</h4>
+        <p class="home" matLine><span class="material-symbols-outlined">monitoring</span>
+          Subgrupo</p>
       </mat-list-item>
       <mat-list-item routerLink="/marca" routerLinkActive="active">
-        <h4 matLine>Marca</h4>
+        <p class="home" matLine>
+          <span class="material-symbols-outlined">deployed_code</span>
+          Marca
+        </p>
       </mat-list-item>
       <mat-list-item routerLink="/unidade" routerLinkActive="active">
-        <h4 matLine>Unidade</h4>
+        <p class="home" matLine><mat-icon class="icon" matListIcon>insert_drive_file</mat-icon> Unidade</p>
       </mat-list-item>
       <mat-list-item routerLink="/produtos" routerLinkActive="active">
-        <h4 matLine>Produto</h4>
+        <p class="home" matLine><mat-icon class="icon" matListIcon>web</mat-icon> Produto</p>
       </mat-list-item>
+      <span id="border">
+        <p id="greySidebar">GROUPED SCREENS</p>
+      </span>
+      <span id="border">
+        <p id="greySidebar">Version 1.0</p>
+      </span>
     </mat-nav-list>
   </mat-sidenav>
 
