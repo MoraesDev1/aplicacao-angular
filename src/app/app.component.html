@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">
+  <span>Produtos</span>
+  <span class="example-spacer"></span>
+  <div id="icons">
+    <mat-icon>search</mat-icon>
+    <mat-icon matBadge="5" matBadgeSize="small" matBadgeColor="warn">notifications</mat-icon>
+    <mat-icon matBadge="2" matBadgeSize="small" matBadgeColor="warn">message</mat-icon>
+    <mat-icon matBadge="3" matBadgeSize="small" matBadgeColor="warn">format_list_numbered</mat-icon>
+    <mat-icon>face</mat-icon>
+  </div>
+  <span>Time A</span>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list class="lista">
+      <mat-list-item routerLink="/dashboard" routerLinkActive="active">
+        <p class="home" matLine><mat-icon class="icon" matListIcon>dashboard</mat-icon>Dashboard</p>
+      </mat-list-item>
+      <mat-list-item routerLink="/grupo" routerLinkActive="active">
+        <p matLine>Grupo</p>
+      </mat-list-item>
+      <mat-list-item routerLink="/subgrupo" routerLinkActive="active">
+        <h4 matLine>Subgrupo</h4>
+      </mat-list-item>
+      <mat-list-item routerLink="/marca" routerLinkActive="active">
+        <h4 matLine>Marca</h4>
+      </mat-list-item>
+      <mat-list-item routerLink="/unidade" routerLinkActive="active">
+        <h4 matLine>Unidade</h4>
+      </mat-list-item>
+      <mat-list-item routerLink="/produtos" routerLinkActive="active">
+        <h4 matLine>Produto</h4>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
