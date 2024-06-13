@@ -1,0 +1,31 @@
+#body {
+  height: 100vh;
+
+}
+
+table {
+    margin: 10px;
+}
+
+h1 {
+    margin: 5px;
+}
+
+.button {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.insertButton {
+  font-size: 30px;
+  color: #fff;
+  box-shadow: 1px 1px 1px 1px #cacaca;
+  height: 50px;
+  width: 50px;
+  background-color: rgb(28, 155, 151);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
