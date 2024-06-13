@@ -14,12 +14,13 @@ import { SubgrupoDialogExcluindoComponent } from './subgrupo-dialog-excluindo/su
 
 
 export class SubgrupoComponent {
-  constructor(public dialog: MatDialog){
+  constructor(public dialog: MatDialog) {
 
   }
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(SubgrupoDialogInserindoComponent, {
       width: '100%',
+      height: '90vh'
     });
   }
   openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string): void {

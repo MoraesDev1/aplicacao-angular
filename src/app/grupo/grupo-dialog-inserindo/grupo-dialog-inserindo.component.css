@@ -25,6 +25,8 @@ body {
   border-radius: 5px;
   color: white;
   border-color: rgb(245, 35, 35);
+  width: 40px;
+  height: 40px;
 }
 
 .y {
@@ -32,7 +34,8 @@ body {
   border-radius: 5px;
   color: white;
   border-color: rgb(85, 212, 85);
-
+  width: 40px;
+  height: 40px;
 }
 
 .name,
