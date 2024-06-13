@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Grupo } from 'src/app/model/grupo';
+import { GrupoService } from 'src/app/services/grupo.service';
 
 @Component({
   selector: 'app-grupo-dialog-excluindo',
@@ -7,4 +10,14 @@ import { Component } from '@angular/core';
 })
 export class GrupoDialogExcluindoComponent {
 
+  constructor(
+    public dialogRef: MatDialogRef<GrupoDialogExcluindoComponent>
+  ) { }
+
+  sim() {
+    this.dialogRef.close(true);
+  }
+  nao() {
+    this.dialogRef.close(false);
+  }
 }

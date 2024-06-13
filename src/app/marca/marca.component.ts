@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MarcaDialogInserindoComponent } from './marca-dialog-inserindo/marca-dialog-inserindo.component';
 import { MarcaDialogEditandoComponent } from './marca-dialog-editando/marca-dialog-editando.component';
 import { MarcaDialogExcluindoComponent } from './marca-dialog-excluindo/marca-dialog-excluindo.component';
+import { Marca } from '../model/marca';
+import { MarcaService } from '../services/marca.service';
 
 @Component({
   selector: 'app-marca',
@@ -14,9 +16,18 @@ import { MarcaDialogExcluindoComponent } from './marca-dialog-excluindo/marca-di
 })
 export class MarcaComponent {
 
-  constructor(public dialog: MatDialog) {
+  marca: Marca[] = [];
 
-}
+  displayedColumns = ['botoes', 'nome', 'descricao'];
+
+  constructor(private marcaService: MarcaService, public dialog: MatDialog) {
+    this.getBrands();
+  }
+
+  getBrands() {
+    this.marcaService.getBrands().subscribe(marca => this.marca = marca);
+  }
+
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(MarcaDialogInserindoComponent, {
       width: '100%',

@@ -1,22 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Grupo } from '../model/grupo';
+import { Unidade } from '../model/unidade';
 import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class GrupoService {
+export class UnidadeService {
 
   private _api = environment.api;
 
   constructor(private httpClient: HttpClient) { }
 
-  getGroups() {
-    return this.httpClient.get<Grupo[]>(this._api + '/group');
+  getUnits() {
+    return this.httpClient.get<Unidade[]>(this._api + '/unit');
   }
 
-  deleteGroup(idGroup: Number) {
-    return this.httpClient.delete<Grupo>(this._api + '/group/' + idGroup);
+  deleteUnit(idUnit: number) {
+    return this.httpClient.delete<Unidade>(this._api + '/unit/' + idUnit);
   }
 }
