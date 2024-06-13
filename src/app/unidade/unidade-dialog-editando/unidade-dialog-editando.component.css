@@ -25,8 +25,6 @@ body {
   border-radius: 5px;
   color: white;
   border-color: rgb(245, 35, 35);
-  width: 40px;
-  height: 40px;
 }
 
 .y {
@@ -34,20 +32,17 @@ body {
   border-radius: 5px;
   color: white;
   border-color: rgb(85, 212, 85);
-  width: 40px;
-  height: 40px;
+
 }
 
 .name,
 .descrition,
 .options,
-.full-width-select,
-.Id {
+.full-width-select {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 120%;
   padding-bottom: 8px;
   color: rgb(133, 130, 130);
-  margin: 0 !important;
 }
 
 .field {
@@ -147,11 +142,21 @@ mat-card {
   box-sizing: border-box;
   display: block;
   font-size: 16px;
-  background-color: #f9f9f9;
+
   color: rgb(133, 130, 130);
+  background-color: #c0c0c0;
 }
 
 mat-card-content {
   padding: 16px;
   box-sizing: border-box;
+}
+
+.disabledInput {
+  background-color: #d4d4d4;
+  color: rgba(161, 159, 159, 0.932);
+}
+
+.name {
+  margin: 0 !important;
 }

@@ -5,10 +5,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProdutosDialogInserindoComponent } from './produtos-dialog-inserindo/produtos-dialog-inserindo.component';
 import { ProdutosDialogEditandoComponent } from './produtos-dialog-editando/produtos-dialog-editando.component';
 import { ProdutosDialogExcluindoComponent } from './produtos-dialog-excluindo/produtos-dialog-excluindo.component';
+
+
 @Component({
   selector: 'app-produtos',
   templateUrl: './produtos.component.html',
-  styleUrls: ['./produtos.component.css']
+  styleUrls: ['./produtos.component.css'],
 })
 export class ProdutosComponent {
   constructor(public dialog: MatDialog) {
@@ -31,4 +33,5 @@ export class ProdutosComponent {
       width: '50%',
     });
   }
+
 }

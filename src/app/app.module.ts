@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -61,7 +62,7 @@ import { UnidadeDialogExcluindoComponent } from './unidade/unidade-dialog-exclui
     SubgrupoDialogExcluindoComponent,
     UnidadeDialogInserindoComponent,
     UnidadeDialogEditandoComponent,
-    UnidadeDialogExcluindoComponent
+    UnidadeDialogExcluindoComponent,
 
   ],
   imports: [
@@ -77,7 +78,11 @@ import { UnidadeDialogExcluindoComponent } from './unidade/unidade-dialog-exclui
     MatButtonModule,
     MatTableModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule,
+
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

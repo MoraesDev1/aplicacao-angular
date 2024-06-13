@@ -46,7 +46,6 @@ body {
   font-size: 120%;
   padding-bottom: 8px;
   color: rgb(133, 130, 130);
-  margin: 0 !important;
 }
 
 .field {
@@ -153,4 +152,9 @@ mat-card {
 mat-card-content {
   padding: 16px;
   box-sizing: border-box;
+
+}
+
+.options {
+  margin: 0 !important;
 }
