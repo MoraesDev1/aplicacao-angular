@@ -1,12 +1,12 @@
 import { GrupoInterface } from "./model/grupo";
 
 export class Grupo implements GrupoInterface {
-    id?: number | undefined;
+    id?: number;
     nome: string;
     descricao: string;
 
-    constructor(id: number, nome: string, descricao: string) {
-        this.id;
+    constructor(nome: string, descricao: string, id?: number) {
+        this.id = id;
         this.nome = nome;
         this.descricao = descricao;
     }

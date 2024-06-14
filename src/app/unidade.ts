@@ -1,12 +1,12 @@
 import { UnidadeInterface } from "./model/unidade";
 
 export class Unidade implements UnidadeInterface {
-    id?: Number | undefined;
+    id?: Number;
     sigla: String;
     descricao: String;
 
-    constructor(id: Number, sigla: String, descricao: String) {
-        this.id;
+    constructor(sigla: String, descricao: String, id?: Number) {
+        this.id = id;
         this.sigla = sigla;
         this.descricao = descricao;
     }

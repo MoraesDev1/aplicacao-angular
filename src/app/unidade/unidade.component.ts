@@ -9,6 +9,7 @@ import { UnidadeInterface } from '../model/unidade';
 import { UnidadeService } from '../services/unidade.service';
 import { ProdutoInterface } from '../model/produto';
 import { ProdutoService } from '../services/produto.service';
+import { Unidade } from '../unidade';
 @Component({
   selector: 'app-unidade',
   templateUrl: './unidade.component.html',
@@ -39,15 +40,35 @@ export class UnidadeComponent {
     }
   }
 
+  postUnit(unit: Unidade) {
+    this.unidadeService.postUnit(unit).subscribe(_ => this.getUnits());
+  }
+
+  editUnit(unit: Unidade) {
+    this.unidadeService.editUnit(unit.id!, unit).subscribe(_ => this.getUnits());
+  }
+
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(UnidadeDialogInserindoComponent, {
+    const dialogRef = this.dialog.open(UnidadeDialogInserindoComponent, {
       width: '100%',
     });
+    dialogRef.afterClosed().subscribe(newUnit => {
+      if (newUnit) {
+        this.postUnit(newUnit);
+      }
+    });
   }
-  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(UnidadeDialogEditandoComponent, {
+  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, selectedUnit: Unidade): void {
+    const dialogRef = this.dialog.open(UnidadeDialogEditandoComponent, {
       width: '100%',
-      height: '90vh'
+      height: '90vh',
+      data: { selectedUnit }
+    });
+    dialogRef.afterClosed().subscribe(editedUnit => {
+      if (editedUnit) {
+        this.editUnit(editedUnit);
+        window.location.reload();
+      }
     });
   }
 

@@ -1,12 +1,12 @@
 import { MarcaInterface } from "./model/marca";
 
 export class Marca implements MarcaInterface {
-    id?: Number | undefined;
+    id?: Number;
     nome: String;
     descricao: String;
 
-    constructor(id: Number, nome: String, descricao: String) {
-        this.id;
+    constructor(nome: String, descricao: String, id?: Number) {
+        this.id = id;
         this.nome = nome;
         this.descricao = descricao;
     }

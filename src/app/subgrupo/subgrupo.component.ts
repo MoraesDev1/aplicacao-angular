@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { SubgrupoDialogInserindoComponent } from './subgrupo-dialog-inserindo/subgrupo-dialog-inserindo.component';
+
 import { SubgrupoDialogEditandoComponent } from './subgrupo-dialog-editando/subgrupo-dialog-editando.component';
 import { SubgrupoDialogExcluindoComponent } from './subgrupo-dialog-excluindo/subgrupo-dialog-excluindo.component';
 import { SubgrupoInterface } from '../model/subgrupo';
@@ -9,6 +9,8 @@ import { GrupoInterface } from '../model/grupo';
 import { GrupoService } from '../services/grupo.service';
 import { ProdutoInterface } from '../model/produto';
 import { ProdutoService } from '../services/produto.service';
+import { SubgrupoDialogInserindoComponent } from './subgrupo-dialog-inserindo/subgrupo-dialog-inserindo.component';
+import { Subgrupo } from '../subgrupo';
 
 @Component({
   selector: 'app-subgrupo',
@@ -26,10 +28,14 @@ export class SubgrupoComponent {
   constructor(public dialog: MatDialog, private subgrupoService: SubgrupoService, private grupoService: GrupoService, private produtoService: ProdutoService) {
     this.getGroups();
     this.getSubgroups();
+    this.getProducts();
   }
 
   getGroups() {
     this.grupoService.getGroups().subscribe(grupo => this.grupo = grupo);
+  }
+
+  getProducts() {
     this.produtoService.getProducts().subscribe(produto => this.produto = produto);
   }
 
@@ -59,15 +65,41 @@ export class SubgrupoComponent {
     }
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(SubgrupoDialogInserindoComponent, {
-      width: '100%',
-    });
+  postSubgroup(subgroup: Subgrupo) {
+    this.subgrupoService.postSubgroup(subgroup).subscribe(_ => this.getSubgroups());
   }
-  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(SubgrupoDialogEditandoComponent, {
+
+  editSubgroup(subgroup: Subgrupo) {
+    this.subgrupoService.editSubgroup(subgroup.id!, subgroup).subscribe(_ => this.getSubgroups());
+  }
+
+  retornaListaDeGrupos() {
+    return this.grupoService.getGroups().subscribe(grupo => this.grupo = grupo);
+  }
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string,): void {
+    const dialogRef = this.dialog.open(SubgrupoDialogInserindoComponent, {
       width: '100%',
       height: '90vh'
+    });
+    dialogRef.afterClosed().subscribe(newSubgroup => {
+      if (newSubgroup) {
+        this.postSubgroup(newSubgroup);
+      }
+    });
+  }
+
+  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, selectedSubgroup: Subgrupo): void {
+    const dialogRef = this.dialog.open(SubgrupoDialogEditandoComponent, {
+      width: '100%',
+      height: '90vh',
+      data: { selectedSubgroup }
+    });
+    dialogRef.afterClosed().subscribe(editedSubgroup => {
+      if (editedSubgroup) {
+        this.editSubgroup(editedSubgroup);
+        window.location.reload();
+      }
     });
   }
 

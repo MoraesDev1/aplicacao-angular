@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { GrupoService } from '../services/grupo.service';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+
 import { MatDialog } from '@angular/material/dialog';
 import { MarcaDialogInserindoComponent } from './marca-dialog-inserindo/marca-dialog-inserindo.component';
 import { MarcaDialogEditandoComponent } from './marca-dialog-editando/marca-dialog-editando.component';
@@ -10,6 +8,7 @@ import { MarcaInterface } from '../model/marca';
 import { MarcaService } from '../services/marca.service';
 import { ProdutoInterface } from '../model/produto';
 import { ProdutoService } from '../services/produto.service';
+import { Marca } from '../marca';
 
 @Component({
   selector: 'app-marca',
@@ -41,15 +40,36 @@ export class MarcaComponent {
     }
   }
 
+  postBrand(brand: Marca) {
+    this.marcaService.postBrand(brand).subscribe(_ => this.getBrands());
+  }
+
+  editBrand(brand: Marca) {
+    this.marcaService.editBrand(brand.id!, brand).subscribe(_ => this.getBrands());
+  }
+
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(MarcaDialogInserindoComponent, {
+    const dialogRef = this.dialog.open(MarcaDialogInserindoComponent, {
       width: '100%',
     });
+    dialogRef.afterClosed().subscribe(newBrand => {
+      if (newBrand) {
+        this.postBrand(newBrand);
+      }
+    });
   }
-  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(MarcaDialogEditandoComponent, {
+
+  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, selectedBrand: Marca): void {
+    const dialogRef = this.dialog.open(MarcaDialogEditandoComponent, {
       width: '100%',
-      height: '90vh'
+      height: '90vh',
+      data: { selectedBrand }
+    });
+    dialogRef.afterClosed().subscribe(editedBrand => {
+      if (editedBrand) {
+        this.editBrand(editedBrand);
+        window.location.reload();
+      }
     });
   }
 

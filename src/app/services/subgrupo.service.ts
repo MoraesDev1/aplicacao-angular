@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SubgrupoInterface } from '../model/subgrupo';
 import { environment } from 'src/environments/environment';
+import { Subgrupo } from '../subgrupo';
 
 
 @Injectable({
@@ -19,5 +20,13 @@ export class SubgrupoService {
 
   deleteSubgroup(idSubgroup: Number) {
     return this.httpClient.delete<SubgrupoInterface>(this._api + '/subgroup/' + idSubgroup);
+  }
+
+  postSubgroup(subgroup: Subgrupo) {
+    return this.httpClient.post(this._api + '/subgroup', subgroup);
+  }
+
+  editSubgroup(idSubgroup: Number, subgroup: Subgrupo) {
+    return this.httpClient.put(this._api + '/subgroup/' + idSubgroup, subgroup);
   }
 }

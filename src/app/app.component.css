@@ -3,9 +3,8 @@
   padding: 0;
 }
 
-.active {
-  background-color: rgba(162, 162, 162, 0.249);
-
+mat-list-item:active {
+  background-color: rgba(149, 149, 149, 0.819);
 }
 
 #nav {
@@ -24,12 +23,12 @@
 }
 
 .lista {
-  width: 15vw;
+  width: 20vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  overflow: hidden;
 }
 
 .home {
@@ -40,7 +39,10 @@
 }
 
 .icon {
-  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 #icons {
@@ -66,4 +68,36 @@ mat-icon {
   width: 100%;
   border-top: 1px solid lightgray;
   margin: 0;
+}
+
+p {
+  font-size: 12px;
+}
+
+.produtos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-button {
+  display: none;
+}
+
+@media (max-width: 1030px) {
+  .menu-button {
+    display: block;
+    position: relative;
+  }
+  .produtos {
+    position: fixed;
+    margin: 50px;
+  }
+  .produtos img {
+    display: none;
+  }
+  .icons {
+    width: 30px;
+  }
 }

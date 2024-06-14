@@ -1,16 +1,16 @@
 import { SubgrupoInterface } from "./model/subgrupo";
 
 export class Subgrupo implements SubgrupoInterface {
-    id?: Number | undefined;
+    id?: Number;
     idProdutoGrupo: Number;
-    nomeGrupo?: String | undefined;
+    nomeGrupo?: String;
     nome: string;
     descricao: string;
 
-    constructor(id: Number, idProdutoGrupo: Number, nomeGrupo: String, nome: string, descricao: string) {
-        this.id,
+    constructor(idProdutoGrupo: Number, nome: string, descricao: string, id?: Number, nomeGrupo?: String) {
+        this.id = id,
             this.idProdutoGrupo = idProdutoGrupo,
-            this.nomeGrupo,
+            this.nomeGrupo = nomeGrupo,
             this.nome = nome,
             this.descricao = descricao
     }

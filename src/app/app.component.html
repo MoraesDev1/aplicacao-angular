@@ -1,50 +1,58 @@
-<link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
+<!--HEADER-->
 <mat-toolbar color="primary" id="nav">
-  <div>Produtos</div>
+  <button mat-icon-button (click)="toggleSidebar()" class="menu-button">
+    <mat-icon matListIcon>menu</mat-icon>
+  </button>
+  <div class="produtos">
+    <img src="/assets/logo.png" alt="" width="30px">
+    <span>Produtos</span>
+  </div>
   <div id="icons">
-    <mat-icon>search</mat-icon>
+    <mat-icon class="icon">search</mat-icon>
     <mat-icon matBadge="5" matBadgeSize="small" matBadgeColor="warn">notifications</mat-icon>
     <mat-icon matBadge="2" matBadgeSize="small" matBadgeColor="warn">mail</mat-icon>
     <mat-icon matBadge="3" matBadgeSize="small" matBadgeColor="warn">format_list_numbered</mat-icon>
     <span>|</span>
-    <mat-icon class="icon" matListIcon>account_circle</mat-icon>
-    <span>Time A</span>
+    <span class="icon"><mat-icon class="icon" matListIcon>account_circle</mat-icon>Time A</span>
   </div>
 </mat-toolbar>
 
+<!--NAV-SIDEBAR-->
 <mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" opened>
+  <mat-sidenav class="sidebar" [mode]="isSidebarOpened ? 'side' : 'over'" [(opened)]="isSidebarOpened">
     <mat-nav-list class="lista">
       <mat-list-item routerLink="/dashboard" routerLinkActive="active">
-        <p class="home" matLine><mat-icon class="icon" matListIcon>dashboard</mat-icon> Dashboard</p>
+        <p class="home" matLine><mat-icon class="icon" matListIcon>dashboard</mat-icon>Dashboard</p>
       </mat-list-item>
+
       <span id="border">
         <p id="greySidebar">SIMPLE SCREENS</p>
       </span>
+
       <mat-list-item routerLink="/grupo" routerLinkActive="active">
-        <p class="home" matLine><mat-icon class="icon" matListIcon>palette</mat-icon> Grupo</p>
+        <p class="home" matLine><mat-icon class="icon" matListIcon>palette</mat-icon>Produto Grupo</p>
       </mat-list-item>
+
       <mat-list-item routerLink="/subgrupo" routerLinkActive="active">
-        <p class="home" matLine><span class="material-symbols-outlined">monitoring</span>
-          Subgrupo</p>
+        <p class="home" matLine><i class="material-icons">bar_chart</i>Produto Subgrupo</p>
       </mat-list-item>
+
       <mat-list-item routerLink="/marca" routerLinkActive="active">
-        <p class="home" matLine>
-          <span class="material-symbols-outlined">deployed_code</span>
-          Marca
-        </p>
+        <p class="home" matLine><i class="material-symbols-outlined">deployed_code</i>Produto Marca</p>
       </mat-list-item>
+
       <mat-list-item routerLink="/unidade" routerLinkActive="active">
-        <p class="home" matLine><mat-icon class="icon" matListIcon>insert_drive_file</mat-icon> Unidade</p>
+        <p class="home" matLine><i class="material-icons">insert_drive_file</i>Produto Unidade</p>
       </mat-list-item>
+
       <mat-list-item routerLink="/produtos" routerLinkActive="active">
-        <p class="home" matLine><mat-icon class="icon" matListIcon>web</mat-icon> Produto</p>
+        <p class="home" matLine><i class="material-icons">web</i>Produto</p>
       </mat-list-item>
+
       <span id="border">
         <p id="greySidebar">GROUPED SCREENS</p>
       </span>
+      
       <span id="border">
         <p id="greySidebar">Version 1.0</p>
       </span>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ProdutoInterface } from '../model/produto';
 import { environment } from 'src/environments/environment';
+import { Produto } from '../produto';
 
 
 @Injectable({
@@ -19,5 +20,13 @@ export class ProdutoService {
 
   deleteProducts(idProduct: Number) {
     return this.httpClient.delete<ProdutoInterface>(this._api + '/product/' + idProduct);
+  }
+
+  postProduct(product: Produto) {
+    return this.httpClient.post(this._api + '/product', product);
+  }
+
+  editProduct(idProduct: Number, product: Produto) {
+    return this.httpClient.put(this._api + '/product/' + idProduct, product);
   }
 }

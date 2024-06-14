@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { GrupoInterface } from '../model/grupo';
 import { GrupoService } from '../services/grupo.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { GrupoDialogInserindoComponent } from './grupo-dialog-inserindo/grupo-dialog-inserindo.component';
 import { GrupoDialogEditandoComponent } from './grupo-dialog-editando/grupo-dialog-editando.component';
 import { GrupoDialogExcluindoComponent } from './grupo-dialog-excluindo/grupo-dialog-excluindo.component';
@@ -45,6 +45,9 @@ export class GrupoComponent {
     this.grupoService.postGroup(grupo).subscribe(_ => this.getGroups());
   }
 
+  editGroup(grupo: Grupo) {
+    this.grupoService.editGroup(grupo.id!, grupo).subscribe(_ => this.getGroups());
+  }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     const dialogRef = this.dialog.open(GrupoDialogInserindoComponent, {
@@ -54,13 +57,20 @@ export class GrupoComponent {
       if (newGroup) {
         this.postGroup(newGroup);
       }
-    })
+    });
   }
 
-  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(GrupoDialogEditandoComponent, {
+  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, selectedGroup: Grupo): void {
+    const dialogRef = this.dialog.open(GrupoDialogEditandoComponent, {
       width: '100%',
-      height: '90vh'
+      height: '90vh',
+      data: { selectedGroup }
+    });
+    dialogRef.afterClosed().subscribe(editedGroup => {
+      if (editedGroup) {
+        this.editGroup(editedGroup);
+        window.location.reload();
+      }
     });
   }
 
