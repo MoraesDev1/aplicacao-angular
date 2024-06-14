@@ -1,22 +1,26 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
-import { UnidadeDialogInserindoComponent } from './unidade-dialog-inserindo/unidade-dialog-inserindo.component';
+import { Grupo } from '../model/grupo';
+import { GrupoService } from '../services/grupo.service';
+
 import { UnidadeDialogEditandoComponent } from './unidade-dialog-editando/unidade-dialog-editando.component';
 import { UnidadeDialogExcluindoComponent } from './unidade-dialog-excluindo/unidade-dialog-excluindo.component';
+
 import { UnidadeInterface } from '../model/unidade';
 import { UnidadeService } from '../services/unidade.service';
 import { ProdutoInterface } from '../model/produto';
 import { ProdutoService } from '../services/produto.service';
 import { Unidade } from '../unidade';
+
+import { UnidadeDialogInserindoComponent } from './unidade-dialog-inserindo/unidade-dialog-inserindo.component';
+
+
 @Component({
   selector: 'app-unidade',
   templateUrl: './unidade.component.html',
   styleUrls: ['./unidade.component.css']
 })
 export class UnidadeComponent {
-
   unidade: UnidadeInterface[] = [];
   produto: ProdutoInterface[] = [];
 
@@ -46,6 +50,7 @@ export class UnidadeComponent {
 
   editUnit(unit: Unidade) {
     this.unidadeService.editUnit(unit.id!, unit).subscribe(_ => this.getUnits());
+
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {

@@ -3,8 +3,17 @@
     <h1>Produto Marca</h1>
     <mat-card>
       <mat-card-content>
+        <section id="inputs">
+          <div id="inputNumber">
+            <input type="number" value="3" max="10" min="1">
+            <label for="number">results per page</label>
+          </div>
+          <div id="inputText">
+            <label for="text">Search</label>
+            <input type="text">
+          </div>
+        </section>
 
-        <!--INSERIR EM TABLE[dataSource]="marca"-->
         <table mat-table [dataSource]="marca" class="mat-elevation-z8">
           <!-- Symbol Column -->
           <ng-container matColumnDef="botoes">
@@ -32,12 +41,18 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+
+        <section id="bottom">
+          <p>Showing 2 of 2 entrities</p>
+          <section >
+            <button id="buttonJump">Previous</button>
+            <button id="buttonNext">Next</button>
+          </section>
+        </section>
+
         <div class="button">
           <button class="insertButton" (click)="openDialog('0ms', '0ms')">+</button>
         </div>
-
-
-
       </mat-card-content>
     </mat-card>
   </div>

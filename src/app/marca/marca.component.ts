@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-
 import { MatDialog } from '@angular/material/dialog';
-import { MarcaDialogInserindoComponent } from './marca-dialog-inserindo/marca-dialog-inserindo.component';
+import { Grupo } from '../model/grupo';
+import { GrupoService } from '../services/grupo.service';
+
 import { MarcaDialogEditandoComponent } from './marca-dialog-editando/marca-dialog-editando.component';
 import { MarcaDialogExcluindoComponent } from './marca-dialog-excluindo/marca-dialog-excluindo.component';
 import { MarcaInterface } from '../model/marca';
@@ -10,13 +11,13 @@ import { ProdutoInterface } from '../model/produto';
 import { ProdutoService } from '../services/produto.service';
 import { Marca } from '../marca';
 
+
 @Component({
   selector: 'app-marca',
   templateUrl: './marca.component.html',
   styleUrls: ['./marca.component.css']
 })
 export class MarcaComponent {
-
   marca: MarcaInterface[] = [];
   produto: ProdutoInterface[] = [];
 

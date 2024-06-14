@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
-import { ProdutosDialogInserindoComponent } from './produtos-dialog-inserindo/produtos-dialog-inserindo.component';
+import { Grupo } from '../model/grupo';
+import { GrupoService } from '../services/grupo.service';
 import { ProdutosDialogEditandoComponent } from './produtos-dialog-editando/produtos-dialog-editando.component';
 import { ProdutosDialogExcluindoComponent } from './produtos-dialog-excluindo/produtos-dialog-excluindo.component';
 import { ProdutoInterface } from '../model/produto';
 import { ProdutoService } from '../services/produto.service';
+import { ProdutosDialogInserindoComponent } from './produtos-dialog-inserindo/produtos-dialog-inserindo.component';
+
 @Component({
   selector: 'app-produtos',
   templateUrl: './produtos.component.html',
   styleUrls: ['./produtos.component.css'],
 })
 export class ProdutosComponent {
-
   produto: ProdutoInterface[] = [];
 
   displayedColumns = ['botoes', 'nome', 'gtin', 'valor', 'dataCadastro'];
@@ -28,6 +28,7 @@ export class ProdutosComponent {
 
   deleteProduct(idProduct: Number) {
     this.produtoService.deleteProducts(idProduct).subscribe(_ => this.getProducts());
+
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {

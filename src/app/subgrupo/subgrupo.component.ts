@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Grupo } from '../model/grupo';
+import { GrupoService } from '../services/grupo.service';
 
 import { SubgrupoDialogEditandoComponent } from './subgrupo-dialog-editando/subgrupo-dialog-editando.component';
 import { SubgrupoDialogExcluindoComponent } from './subgrupo-dialog-excluindo/subgrupo-dialog-excluindo.component';
@@ -75,6 +77,7 @@ export class SubgrupoComponent {
 
   retornaListaDeGrupos() {
     return this.grupoService.getGroups().subscribe(grupo => this.grupo = grupo);
+
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string,): void {

@@ -20,7 +20,6 @@ export class GrupoComponent {
   grupo: GrupoInterface[] = [];
   subgrupo: SubgrupoInterface[] = [];
 
-
   displayedColumns = ['botoes', 'nome', 'descricao'];
 
   constructor(public dialog: MatDialog, private grupoService: GrupoService, private subgrupoService: SubgrupoService) {
