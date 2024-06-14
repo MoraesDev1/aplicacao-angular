@@ -10,13 +10,13 @@ body {
   background-color: rgb(214, 213, 213);
 }
 
-
 .buttonsContainer {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 25px;
+  cursor: pointer;
 }
 
 
@@ -27,6 +27,7 @@ body {
   border: transparent;
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 
 .y {
@@ -36,8 +37,8 @@ body {
   border: transparent;
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
-
 .name,
 .descrition,
 .options,
