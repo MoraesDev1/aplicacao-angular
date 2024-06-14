@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProdutosDialogInserindoComponent } from './produtos-dialog-inserindo/produtos-dialog-inserindo.component';
 import { ProdutosDialogEditandoComponent } from './produtos-dialog-editando/produtos-dialog-editando.component';
 import { ProdutosDialogExcluindoComponent } from './produtos-dialog-excluindo/produtos-dialog-excluindo.component';
-import { Produto } from '../model/produto';
+import { ProdutoInterface } from '../model/produto';
 import { ProdutoService } from '../services/produto.service';
 @Component({
   selector: 'app-produtos',
@@ -14,7 +14,7 @@ import { ProdutoService } from '../services/produto.service';
 })
 export class ProdutosComponent {
 
-  produto: Produto[] = [];
+  produto: ProdutoInterface[] = [];
 
   displayedColumns = ['botoes', 'nome', 'gtin', 'valor', 'dataCadastro'];
 

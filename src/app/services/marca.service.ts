@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Marca } from '../model/marca';
+import { MarcaInterface } from '../model/marca';
 import { environment } from 'src/environments/environment';
 
 
@@ -14,10 +14,10 @@ export class MarcaService {
   constructor(private httpClient: HttpClient) { }
 
   getBrands() {
-    return this.httpClient.get<Marca[]>(this._api + '/brand');
+    return this.httpClient.get<MarcaInterface[]>(this._api + '/brand');
   }
 
   deleteBrand(idBrand: Number) {
-    return this.httpClient.delete<Marca>(this._api + '/brand/' + idBrand);
+    return this.httpClient.delete<MarcaInterface>(this._api + '/brand/' + idBrand);
   }
 }

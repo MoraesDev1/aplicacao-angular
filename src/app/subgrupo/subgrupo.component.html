@@ -7,7 +7,7 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let subgrupo"> <button class="insertButton"
           (click)="openDialogEdit('0ms', '0ms')">+</button>
-        <button class="insertButton" (click)="openDialogExclude('0ms', '0ms')">+</button>
+        <button class="insertButton" (click)="openDialogExclude('0ms', '0ms', subgrupo.id)">+</button>
       </td>
     </ng-container>
 

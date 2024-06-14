@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Grupo } from 'src/app/model/grupo';
+import { GrupoInterface } from 'src/app/model/grupo';
 import { GrupoService } from 'src/app/services/grupo.service';
 
 @Component({

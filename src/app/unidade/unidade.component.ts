@@ -5,8 +5,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { UnidadeDialogInserindoComponent } from './unidade-dialog-inserindo/unidade-dialog-inserindo.component';
 import { UnidadeDialogEditandoComponent } from './unidade-dialog-editando/unidade-dialog-editando.component';
 import { UnidadeDialogExcluindoComponent } from './unidade-dialog-excluindo/unidade-dialog-excluindo.component';
-import { Unidade } from '../model/unidade';
+import { UnidadeInterface } from '../model/unidade';
 import { UnidadeService } from '../services/unidade.service';
+import { ProdutoInterface } from '../model/produto';
+import { ProdutoService } from '../services/produto.service';
 @Component({
   selector: 'app-unidade',
   templateUrl: './unidade.component.html',
@@ -14,16 +16,27 @@ import { UnidadeService } from '../services/unidade.service';
 })
 export class UnidadeComponent {
 
-  unidade: Unidade[] = [];
+  unidade: UnidadeInterface[] = [];
+  produto: ProdutoInterface[] = [];
 
   displayedColumns = ['botoes', 'sigla', 'descricao'];
 
-  constructor(private unidadeService: UnidadeService, public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private unidadeService: UnidadeService, private produtoService: ProdutoService) {
     this.getUnits();
   }
 
   getUnits() {
     this.unidadeService.getUnits().subscribe(unidade => this.unidade = unidade);
+    this.produtoService.getProducts().subscribe(produto => this.produto = produto);
+  }
+
+  deleteUnit(idUnidade: Number) {
+    const relatedItens = this.produto.filter(produto => produto.idProdutoUnidade === idUnidade);
+    if (relatedItens.length == 0) {
+      this.unidadeService.deleteUnit(idUnidade).subscribe(_ => this.getUnits());
+    } else {
+      alert(`Ação bloqueada\nExistem ${relatedItens.length} produtos dentro desta Unidade no momento`);
+    }
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
@@ -38,9 +51,15 @@ export class UnidadeComponent {
     });
   }
 
-  openDialogExclude(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(UnidadeDialogExcluindoComponent, {
+  openDialogExclude(enterAnimationDuration: string, exitAnimationDuration: string, idUnidade: Number): void {
+    const dialogRef = this.dialog.open(UnidadeDialogExcluindoComponent, {
       width: '50%',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deleteUnit(idUnidade);
+        window.location.reload();
+      }
     });
   }
 }

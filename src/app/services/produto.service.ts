@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Produto } from '../model/produto';
+import { ProdutoInterface } from '../model/produto';
 import { environment } from 'src/environments/environment';
 
 
@@ -14,10 +14,10 @@ export class ProdutoService {
   constructor(private httpClient: HttpClient) { }
 
   getProducts() {
-    return this.httpClient.get<Produto[]>(this._api + '/product');
+    return this.httpClient.get<ProdutoInterface[]>(this._api + '/product');
   }
 
   deleteProducts(idProduct: Number) {
-    return this.httpClient.delete<Produto>(this._api + '/product/' + idProduct);
+    return this.httpClient.delete<ProdutoInterface>(this._api + '/product/' + idProduct);
   }
 }

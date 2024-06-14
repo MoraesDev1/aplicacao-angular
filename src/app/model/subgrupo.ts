@@ -1,4 +1,4 @@
-export interface Subgrupo {
+export interface SubgrupoInterface {
     id?: Number;
     idProdutoGrupo: Number;
     nomeGrupo?: String;

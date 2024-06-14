@@ -1,4 +1,4 @@
-export interface Produto {
+export interface ProdutoInterface {
     id?: Number;
     idProdutoSubgrupo: Number;
     idProdutoMarca: Number;

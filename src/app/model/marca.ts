@@ -1,4 +1,4 @@
-export interface Marca {
+export interface MarcaInterface {
     id?: Number;
     nome: String;
     descricao: String;

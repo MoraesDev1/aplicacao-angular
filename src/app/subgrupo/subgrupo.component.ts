@@ -3,10 +3,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { SubgrupoDialogInserindoComponent } from './subgrupo-dialog-inserindo/subgrupo-dialog-inserindo.component';
 import { SubgrupoDialogEditandoComponent } from './subgrupo-dialog-editando/subgrupo-dialog-editando.component';
 import { SubgrupoDialogExcluindoComponent } from './subgrupo-dialog-excluindo/subgrupo-dialog-excluindo.component';
-import { Subgrupo } from '../model/subgrupo';
+import { SubgrupoInterface } from '../model/subgrupo';
 import { SubgrupoService } from '../services/subgrupo.service';
-import { Grupo } from '../model/grupo';
+import { GrupoInterface } from '../model/grupo';
 import { GrupoService } from '../services/grupo.service';
+import { ProdutoInterface } from '../model/produto';
+import { ProdutoService } from '../services/produto.service';
 
 @Component({
   selector: 'app-subgrupo',
@@ -15,18 +17,20 @@ import { GrupoService } from '../services/grupo.service';
 })
 export class SubgrupoComponent {
 
-  grupo: Grupo[] = [];
-  subgrupo: Subgrupo[] = [];
+  grupo: GrupoInterface[] = [];
+  subgrupo: SubgrupoInterface[] = [];
+  produto: ProdutoInterface[] = [];
 
   displayedColumns = ['botoes', 'grupo', 'nome', 'descricao'];
 
-  constructor(private subgrupoService: SubgrupoService, private grupoService: GrupoService, public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private subgrupoService: SubgrupoService, private grupoService: GrupoService, private produtoService: ProdutoService) {
     this.getGroups();
     this.getSubgroups();
   }
 
   getGroups() {
     this.grupoService.getGroups().subscribe(grupo => this.grupo = grupo);
+    this.produtoService.getProducts().subscribe(produto => this.produto = produto);
   }
 
   getSubgroups() {
@@ -46,6 +50,15 @@ export class SubgrupoComponent {
     });
   }
 
+  deleteSubgroup(idSubgroup: Number) {
+    const relatedItens = this.produto.filter(produto => produto.idProdutoSubgrupo === idSubgroup);
+    if (relatedItens.length == 0) {
+      this.subgrupoService.deleteSubgroup(idSubgroup).subscribe(_ => this.getSubgroups());
+    } else {
+      alert(`Ação bloqueada\nExistem ${relatedItens.length} produtos dentro deste Subgrupo no momento`);
+    }
+  }
+
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(SubgrupoDialogInserindoComponent, {
       width: '100%',
@@ -58,9 +71,15 @@ export class SubgrupoComponent {
     });
   }
 
-  openDialogExclude(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(SubgrupoDialogExcluindoComponent, {
+  openDialogExclude(enterAnimationDuration: string, exitAnimationDuration: string, idSubgroup: Number): void {
+    const dialogRef = this.dialog.open(SubgrupoDialogExcluindoComponent, {
       width: '50%',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deleteSubgroup(idSubgroup);
+        window.location.reload();
+      }
     });
   }
 

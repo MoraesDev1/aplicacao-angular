@@ -1,4 +1,4 @@
-export interface Unidade {
+export interface UnidadeInterface {
     id?: Number;
     sigla: String;
     descricao: String;
