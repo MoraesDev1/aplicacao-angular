@@ -2,28 +2,26 @@
 <mat-dialog-content>
   <div class="input-container">
     <span class="options">Grupo</span>
-    <select id="opcoes" class="full-width-select" disabled>
-      <option value="opcao1">Opção 1</option>
-      <option value="opcao2">Opção 2</option>
-      <option value="opcao3">Opção 3</option>
+    <select id="opcoes" class="full-width-select" [(ngModel)]="selectedGrupo" readonly>
+      <option *ngFor="let grupo of grupos" [value]="grupo.nome">{{ grupo.nome }}</option>
     </select>
   </div>
 
   <div class="input-container">
     <span class="Id">Id</span>
-    <input type="text" class="disabledInput" value="59f28fd7" disabled>
+    <input type="text" class="disabledInput" value="59f28fd7" disabled [(ngModel)]="id">
   </div>
 
   <div class="input-container">
     <span class="name">Nome*</span>
-    <input type="text" placeholder="Informe os dados para o campo Nome" name="nomeInput">
+    <input type="text" placeholder="Informe os dados para o campo Nome" name="nomeInput" [(ngModel)]="nome">
   </div>
 
   <div class="input-container">
     <span class="descrition">Descrição*</span>
-    <input type="text" placeholder="Informe os dados para o campo Descrição" name="descricaoInput">
+    <input type="text" placeholder="Informe os dados para o campo Descrição" name="descricaoInput" [(ngModel)]="desc">
   </div>
-  
+
   <div class="field">
     <span>*field is mandatory</span>
   </div>
@@ -31,5 +29,5 @@
 
 <mat-dialog-actions class="buttonsContainer">
   <button mat-dialog-close class="x"><mat-icon fontIcon="cancel"></mat-icon></button>
-  <button mat-dialog-close cdkFocusInitial class="y"><mat-icon fontIcon="check"></mat-icon></button>
+  <button cdkFocusInitial class="y" (click)="clickConfirm()"><mat-icon fontIcon="check"></mat-icon></button>
 </mat-dialog-actions>

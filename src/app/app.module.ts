@@ -36,6 +36,7 @@ import { UnidadeDialogEditandoComponent } from './unidade/unidade-dialog-editand
 import { UnidadeDialogExcluindoComponent } from './unidade/unidade-dialog-excluindo/unidade-dialog-excluindo.component';
 import { UnidadeDialogInserindoComponent } from './unidade/unidade-dialog-inserindo/unidade-dialog-inserindo.component';
 import { UnidadeComponent } from './unidade/unidade.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -80,6 +81,7 @@ import { UnidadeComponent } from './unidade/unidade.component';
     HttpClientModule,
     MatDialogModule,
     MatInputModule,
+    FormsModule
 
 
 

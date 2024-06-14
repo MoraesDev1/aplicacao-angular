@@ -2,11 +2,11 @@
 <mat-dialog-content>
   <div class="input-container">
     <span class="name">Nome*</span>
-    <input type="text" placeholder="Informe os dados para o campo Nome" name="nomeInput">
+    <input type="text" placeholder="Informe os dados para o campo Nome" name="nomeInput" [(ngModel)]="nome">
   </div>
   <div class="input-container">
     <span class="descrition">Descrição*</span>
-    <input type="text" placeholder="Informe os dados para o campo Descrição" name="descricaoInput">
+    <input type="text" placeholder="Informe os dados para o campo Descrição" name="descricaoInput" [(ngModel)]="desc">
   </div>
   <div class="field">
     <span>*field is mandatory</span>
@@ -15,5 +15,5 @@
 
 <mat-dialog-actions class="buttonsContainer">
   <button mat-dialog-close class="x"><mat-icon fontIcon="cancel"></mat-icon></button>
-  <button mat-dialog-close cdkFocusInitial class="y"><mat-icon fontIcon="check"></mat-icon></button>
+  <button cdkFocusInitial class="y" (click)="clickConfirm()"><mat-icon fontIcon="check"></mat-icon></button>
 </mat-dialog-actions>

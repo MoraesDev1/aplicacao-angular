@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Grupo } from '../model/grupo';
 import { GrupoService } from '../services/grupo.service';
-
 import { ProdutosDialogEditandoComponent } from './produtos-dialog-editando/produtos-dialog-editando.component';
 import { ProdutosDialogExcluindoComponent } from './produtos-dialog-excluindo/produtos-dialog-excluindo.component';
+import { ProdutoInterface } from '../model/produto';
+import { ProdutoService } from '../services/produto.service';
 import { ProdutosDialogInserindoComponent } from './produtos-dialog-inserindo/produtos-dialog-inserindo.component';
-
 
 @Component({
   selector: 'app-produtos',
@@ -14,16 +14,21 @@ import { ProdutosDialogInserindoComponent } from './produtos-dialog-inserindo/pr
   styleUrls: ['./produtos.component.css'],
 })
 export class ProdutosComponent {
-  grupo: Grupo[] = [];
+  produto: ProdutoInterface[] = [];
 
-  displayedColumns = ['botao', 'id', 'nome', 'descricao'];
+  displayedColumns = ['botoes', 'nome', 'gtin', 'valor', 'dataCadastro'];
 
-  constructor(private grupoService: GrupoService, public dialog: MatDialog) {
-    this.getGroups();
+  constructor(private produtoService: ProdutoService, public dialog: MatDialog) {
+    this.getProducts();
   }
 
-  getGroups() {
-    this.grupoService.getGroups().subscribe(grupo => this.grupo = grupo)
+  getProducts() {
+    this.produtoService.getProducts().subscribe(produto => this.produto = produto);
+  }
+
+  deleteProduct(idProduct: Number) {
+    this.produtoService.deleteProducts(idProduct).subscribe(_ => this.getProducts());
+
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
@@ -38,9 +43,15 @@ export class ProdutosComponent {
     });
   }
 
-  openDialogExclude(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(ProdutosDialogExcluindoComponent, {
+  openDialogExclude(enterAnimationDuration: string, exitAnimationDuration: string, idProduct: Number): void {
+    const dialogRef = this.dialog.open(ProdutosDialogExcluindoComponent, {
       width: '50%',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deleteProduct(idProduct);
+        window.location.reload();
+      }
     });
   }
 
