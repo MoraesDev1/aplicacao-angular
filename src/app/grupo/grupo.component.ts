@@ -16,7 +16,7 @@ export class GrupoComponent {
 
   grupo: Grupo[] = [];
 
-  displayedColumns = ['botao', 'id', 'nome', 'descricao'];
+  displayedColumns = ['botao', 'nome', 'descricao'];
 
   constructor(private grupoService: GrupoService, public dialog: MatDialog) {
     this.getGroups();
