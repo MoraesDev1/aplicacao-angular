@@ -4,12 +4,12 @@
 
 #body {
   height: 100vh;
-  width: 70vw;
-
+  max-width: 70vw;
 }
 
 table {
   margin: 10px;
+  overflow-x: scroll;
 }
 
 .button {
@@ -21,7 +21,7 @@ table {
 
 .insertButton {
   font-size: 30px;
-  color: #fff;
+  color: #343434e8;
   box-shadow: 1px 1px 1px 1px #cacaca;
   height: 50px;
   width: 50px;
@@ -69,4 +69,46 @@ mat-card {
 .container::-webkit-scrollbar-thumb {
   background-color: rgb(186, 186, 186);
   border-radius: 4px;
+}
+#inputs {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#inputNumber input {
+  width: 40px;
+  height: 20px;
+  margin: 0;
+}
+
+#inputText input {
+  width: 200px;
+  height: 20px;
+  margin: 0;
+}
+
+#bottom {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#buttonJump, #buttonNext {
+  width: 80px;
+  height: 40px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid grey;
+  margin: 0;
+  box-shadow: 1px 2px 2px rgba(179, 179, 179, 0.525);
+  border: 1px solid lightgray;
+  border-radius: 3px;
+}
+
+
+#buttonNext:hover,
+#buttonJump:hover {
+  background-color: rgba(80, 80, 80, 0.192);
 }

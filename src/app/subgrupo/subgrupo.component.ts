@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Grupo } from '../model/grupo';
+import { GrupoService } from '../services/grupo.service';
 
 import { SubgrupoDialogEditandoComponent } from './subgrupo-dialog-editando/subgrupo-dialog-editando.component';
 import { SubgrupoDialogExcluindoComponent } from './subgrupo-dialog-excluindo/subgrupo-dialog-excluindo.component';
@@ -13,8 +15,16 @@ import { SubgrupoDialogInserindoComponent } from './subgrupo-dialog-inserindo/su
 
 
 export class SubgrupoComponent {
-  constructor(public dialog: MatDialog) {
+  grupo: Grupo[] = [];
 
+  displayedColumns = ['botao', 'id', 'nome', 'descricao'];
+
+  constructor(private grupoService: GrupoService, public dialog: MatDialog) {
+    this.getGroups();
+  }
+
+  getGroups() {
+    this.grupoService.getGroups().subscribe(grupo => this.grupo = grupo)
   }
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(SubgrupoDialogInserindoComponent, {

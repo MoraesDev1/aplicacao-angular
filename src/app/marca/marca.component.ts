@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-
 import { MatDialog } from '@angular/material/dialog';
-import { MarcaDialogInserindoComponent } from './marca-dialog-inserindo/marca-dialog-inserindo.component';
+import { Grupo } from '../model/grupo';
+import { GrupoService } from '../services/grupo.service';
+
 import { MarcaDialogEditandoComponent } from './marca-dialog-editando/marca-dialog-editando.component';
 import { MarcaDialogExcluindoComponent } from './marca-dialog-excluindo/marca-dialog-excluindo.component';
+import { MarcaDialogInserindoComponent } from './marca-dialog-inserindo/marca-dialog-inserindo.component';
 
 @Component({
   selector: 'app-marca',
@@ -12,9 +14,20 @@ import { MarcaDialogExcluindoComponent } from './marca-dialog-excluindo/marca-di
 })
 export class MarcaComponent {
 
-  constructor(public dialog: MatDialog) {
+  
+  grupo: Grupo[] = [];
 
-}
+  displayedColumns = ['botao', 'nome', 'descricao'];
+
+  constructor(private grupoService: GrupoService, public dialog: MatDialog) {
+    this.getGroups();
+  }
+
+  getGroups() {
+    this.grupoService.getGroups().subscribe(grupo => this.grupo = grupo)
+  }
+
+
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(MarcaDialogInserindoComponent, {
       width: '100%',
