@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
 import { Grupo } from '../model/grupo';
 import { GrupoService } from '../services/grupo.service';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { MatDialog } from '@angular/material/dialog';
-import { GrupoDialogInserindoComponent } from './grupo-dialog-inserindo/grupo-dialog-inserindo.component';
 import { GrupoDialogEditandoComponent } from './grupo-dialog-editando/grupo-dialog-editando.component';
 import { GrupoDialogExcluindoComponent } from './grupo-dialog-excluindo/grupo-dialog-excluindo.component';
+import { GrupoDialogInserindoComponent } from './grupo-dialog-inserindo/grupo-dialog-inserindo.component';
+
 @Component({
   selector: 'app-grupo',
   templateUrl: './grupo.component.html',
@@ -16,7 +16,7 @@ export class GrupoComponent {
 
   grupo: Grupo[] = [];
 
-  displayedColumns = ['id', 'nome', 'descricao'];
+  displayedColumns = ['botao', 'id', 'nome', 'descricao'];
 
   constructor(private grupoService: GrupoService, public dialog: MatDialog) {
     this.getGroups();

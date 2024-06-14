@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
-import { SubgrupoDialogInserindoComponent } from './subgrupo-dialog-inserindo/subgrupo-dialog-inserindo.component';
+
 import { SubgrupoDialogEditandoComponent } from './subgrupo-dialog-editando/subgrupo-dialog-editando.component';
 import { SubgrupoDialogExcluindoComponent } from './subgrupo-dialog-excluindo/subgrupo-dialog-excluindo.component';
+import { SubgrupoDialogInserindoComponent } from './subgrupo-dialog-inserindo/subgrupo-dialog-inserindo.component';
 
 @Component({
   selector: 'app-subgrupo',
