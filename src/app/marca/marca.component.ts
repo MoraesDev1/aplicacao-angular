@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { GrupoService } from '../services/grupo.service';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+
 import { MatDialog } from '@angular/material/dialog';
 import { MarcaDialogInserindoComponent } from './marca-dialog-inserindo/marca-dialog-inserindo.component';
 import { MarcaDialogEditandoComponent } from './marca-dialog-editando/marca-dialog-editando.component';

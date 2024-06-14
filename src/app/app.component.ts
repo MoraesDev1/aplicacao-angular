@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'produtos';
+  isSidebarOpened = true;
+
+
+  toggleSidebar() {
+    this.isSidebarOpened = !this.isSidebarOpened;
+  }
 }

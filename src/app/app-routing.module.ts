@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProdutosComponent } from './produtos/produtos.component';
-import { GrupoComponent } from './grupo/grupo.component';
-import { SubgrupoComponent } from './subgrupo/subgrupo.component';
-import { MarcaComponent } from './marca/marca.component';
-import { UnidadeComponent } from './unidade/unidade.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { GrupoComponent } from './grupo/grupo.component';
+import { MarcaComponent } from './marca/marca.component';
+import { ProdutosComponent } from './produtos/produtos.component';
+import { SubgrupoComponent } from './subgrupo/subgrupo.component';
+import { UnidadeComponent } from './unidade/unidade.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full' },

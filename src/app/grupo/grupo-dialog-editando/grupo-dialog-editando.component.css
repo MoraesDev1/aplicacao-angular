@@ -21,19 +21,19 @@ body {
 
 
 .x {
-  background-color: rgb(245, 35, 35);
+  background-color: rgba(244, 50, 50, 0.945);
   border-radius: 5px;
   color: white;
-  border-color: rgb(245, 35, 35);
+  border: transparent;
   width: 40px;
   height: 40px;
 }
 
 .y {
-  background-color: rgb(85, 212, 85);
+  background-color: rgba(54, 187, 54, 0.889);
   border-radius: 5px;
   color: white;
-  border-color: rgb(85, 212, 85);
+  border: transparent;
   width: 40px;
   height: 40px;
 }
