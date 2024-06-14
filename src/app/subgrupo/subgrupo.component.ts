@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Grupo } from '../model/grupo';
-import { GrupoService } from '../services/grupo.service';
-
 import { SubgrupoDialogEditandoComponent } from './subgrupo-dialog-editando/subgrupo-dialog-editando.component';
 import { SubgrupoDialogExcluindoComponent } from './subgrupo-dialog-excluindo/subgrupo-dialog-excluindo.component';
 import { SubgrupoInterface } from '../model/subgrupo';

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Grupo } from '../model/grupo';
 import { GrupoService } from '../services/grupo.service';
 
 import { UnidadeDialogEditandoComponent } from './unidade-dialog-editando/unidade-dialog-editando.component';
