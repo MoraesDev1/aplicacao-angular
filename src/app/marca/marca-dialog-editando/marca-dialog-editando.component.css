@@ -17,6 +17,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 25px;
+  cursor: pointer;
 }
 
 
@@ -27,6 +28,7 @@ body {
   border: transparent;
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 
 .y {
@@ -36,6 +38,7 @@ body {
   border: transparent;
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 
 .name,

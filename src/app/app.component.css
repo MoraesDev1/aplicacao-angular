@@ -49,7 +49,7 @@ mat-list-item:active {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 22%;
+  width: 25%;
 }
 
 mat-icon {
@@ -96,5 +96,8 @@ p {
   }
   .produtos img {
     display: none;
+  }
+  .icons {
+    width: 30px;
   }
 }
