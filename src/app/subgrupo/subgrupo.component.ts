@@ -72,11 +72,6 @@ export class SubgrupoComponent {
     this.subgrupoService.editSubgroup(subgroup.id!, subgroup).subscribe(_ => this.getSubgroups());
   }
 
-  retornaListaDeGrupos() {
-    return this.grupoService.getGroups().subscribe(grupo => this.grupo = grupo);
-
-  }
-
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string,): void {
     const dialogRef = this.dialog.open(SubgrupoDialogInserindoComponent, {
       width: '100%',
@@ -85,6 +80,7 @@ export class SubgrupoComponent {
     dialogRef.afterClosed().subscribe(newSubgroup => {
       if (newSubgroup) {
         this.postSubgroup(newSubgroup);
+        window.location.reload();
       }
     });
   }

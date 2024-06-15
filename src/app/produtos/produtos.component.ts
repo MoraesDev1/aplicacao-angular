@@ -6,6 +6,7 @@ import { ProdutosDialogExcluindoComponent } from './produtos-dialog-excluindo/pr
 import { ProdutoInterface } from '../model/produto';
 import { ProdutoService } from '../services/produto.service';
 import { ProdutosDialogInserindoComponent } from './produtos-dialog-inserindo/produtos-dialog-inserindo.component';
+import { Produto } from '../produto';
 
 @Component({
   selector: 'app-produtos',
@@ -27,18 +28,38 @@ export class ProdutosComponent {
 
   deleteProduct(idProduct: Number) {
     this.produtoService.deleteProducts(idProduct).subscribe(_ => this.getProducts());
+  }
 
+  postProduct(product: Produto) {
+    this.produtoService.postProduct(product).subscribe(_ => this.getProducts());
+  }
+
+  editProduct(product: Produto) {
+    this.produtoService.editProduct(product.id!, product).subscribe(_ => this.getProducts());
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(ProdutosDialogInserindoComponent, {
+    const dialogRef = this.dialog.open(ProdutosDialogInserindoComponent, {
       width: '100%',
     });
+    dialogRef.afterClosed().subscribe(newProduct => {
+      if (newProduct) {
+        this.postProduct(newProduct);
+        window.location.reload();
+      }
+    });
   }
-  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(ProdutosDialogEditandoComponent, {
+  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, selectedProduct: Produto): void {
+    const dialogRef = this.dialog.open(ProdutosDialogEditandoComponent, {
       width: '100%',
-      height: '90vh'
+      height: '90vh',
+      data: { selectedProduct }
+    });
+    dialogRef.afterClosed().subscribe(editedProduct => {
+      if (editedProduct) {
+        this.editProduct(editedProduct);
+        window.location.reload();
+      }
     });
   }
 

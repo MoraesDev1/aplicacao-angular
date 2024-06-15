@@ -1,5 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Grupo } from 'src/app/grupo';
+import { GrupoService } from 'src/app/services/grupo.service';
 
 @Component({
   selector: 'app-subgrupo-dialog-editando',
@@ -8,19 +10,40 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class SubgrupoDialogEditandoComponent {
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<SubgrupoDialogEditandoComponent>
-  ) { }
   id = this.data.selectedSubgroup.id;
   nome = this.data.selectedSubgroup.nome;
   desc = this.data.selectedSubgroup.descricao;
   selectedGroup = this.data.selectedSubgroup.nomeGrupo;
+  idSelectedGroup = this.data.selectedSubgroup.idProdutoGrupo;
 
-  grupos = [
-    { id: this.data.selectedSubgroup.idProdutoGrupo, nome: this.data.selectedSubgroup.nomeGrupo }
-  ];
-  selectedGrupo: Number | any;
+  grupos: Grupo[] = [];
+  selectedGrupo: number | any;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<SubgrupoDialogEditandoComponent>,
+    public groupService: GrupoService
+  ) {
+    this.getGroups();
+  }
+
+  getGroups() {
+    this.groupService.getGroups().subscribe(
+      grupos => {
+        this.grupos = grupos;
+        if (this.grupos.length > 0) {
+          this.grupos.forEach(grupo => {
+            if (grupo.id == this.idSelectedGroup) {
+              this.selectedGrupo = grupo.id;
+            }
+          });
+        }
+      },
+      error => {
+        console.error('Erro ao buscar grupos:', error);
+      }
+    );
+  }
 
   clickConfirm() {
     if (!this.nome) {

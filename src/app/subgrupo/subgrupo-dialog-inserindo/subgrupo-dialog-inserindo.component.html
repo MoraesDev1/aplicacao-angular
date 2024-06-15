@@ -2,8 +2,8 @@
 <mat-dialog-content>
   <div class="input-container">
     <span class="options">Grupo</span>
-    <select id="opcoes" class="full-width-select" [(ngModel)]="selectedGrupo" readonly>
-      <option *ngFor="let grupo of grupos"></option>
+    <select id="opcoes" class="full-width-select" [(ngModel)]="selectedGrupo">
+      <option *ngFor="let grupo of grupos" [value]="grupo.id">{{ grupo.nome }}</option>
     </select>
   </div>
 

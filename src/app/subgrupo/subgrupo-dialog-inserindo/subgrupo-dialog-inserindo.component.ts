@@ -10,29 +10,39 @@ import { Subgrupo } from 'src/app/subgrupo';
   styleUrls: ['./subgrupo-dialog-inserindo.component.css']
 })
 export class SubgrupoDialogInserindoComponent {
+
+  grupos: Grupo[] = [];
+  selectedGrupo!: Number;
+
   constructor(
-    public dialogRef: MatDialogRef<SubgrupoDialogInserindoComponent>, public grupoService: GrupoService
-  ) { }
+    public dialogRef: MatDialogRef<SubgrupoDialogInserindoComponent>, public groupService: GrupoService,
+  ) {
+    this.getGroups();
+  }
 
   id = '';
   nome = '';
   desc = '';
 
-  geraLista() {
-    this.grupoService.getGroups().subscribe()
+  getGroups() {
+    this.groupService.getGroups().subscribe(
+      grupos => this.grupos = grupos,
+      error => {
+        console.error('Erro ao buscar grupos:', error);
+      }
+    );
   }
-
-  grupos = [];
-  selectedGrupo: Number | any;
 
   clickConfirm() {
     if (this.nome == '' || this.nome == null) {
       alert("Nome não informado, favor informe o nome");
     } else if (this.desc == '' || this.desc == null) {
       alert("Descrição não informada, favor informe a descrição");
+    } else if (this.selectedGrupo == null) {
+      alert("Grupo não informado, favor informe o Grupo");
     } else {
-      let novoGrupo = new Subgrupo(5, this.nome, this.desc);
-      this.dialogRef.close(novoGrupo);
+      let novoSubgrupo = new Subgrupo(Number(this.selectedGrupo), this.nome, this.desc);
+      this.dialogRef.close(novoSubgrupo);
     }
   }
 }

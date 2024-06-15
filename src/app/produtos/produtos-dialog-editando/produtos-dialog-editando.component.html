@@ -1,48 +1,49 @@
 <h2 mat-dialog-title>Produtos - Editando</h2>
 <mat-dialog-content>
   <div class="input-container">
+    <span class="options">Grupo</span>
+    <select id="opcoes" class="full-width-select" [(ngModel)]="selectedSubgrupo" disabled>
+      <option *ngFor="let subgrupo of subgrupos" [value]="subgrupo.id">{{ subgrupo.nomeGrupo }}</option>
+    </select>
+  </div>
+  <div class="input-container">
     <span class="options">Subgrupo</span>
-    <select id="opcoes" class="full-width-select" disabled>
-      <option value="opcao1">Opção 1</option>
-      <option value="opcao2">Opção 2</option>
-      <option value="opcao3">Opção 3</option>
+    <select id="opcoes" class="full-width-select" [(ngModel)]="selectedSubgrupo" disabled>
+      <option *ngFor="let subgrupo of subgrupos" [value]="subgrupo.id">{{ subgrupo.nome }}</option>
     </select>
   </div>
   <div class="input-container">
     <span class="options">Marca</span>
-    <select id="opcoes" class="full-width-select" disabled>
-      <option value="opcao1">Opção 1</option>
-      <option value="opcao2">Opção 2</option>
-      <option value="opcao3">Opção 3</option>
+    <select id="opcoes" class="full-width-select" [(ngModel)]="selectedMarca" disabled>
+      <option *ngFor="let marca of marcas" [value]="marca.id">{{ marca.nome }}</option>
     </select>
   </div>
   <div class="input-container">
     <span class="options">Unidade</span>
-    <select id="opcoes" class="full-width-select" disabled>
-      <option value="opcao1">Opção 1</option>
-      <option value="opcao2">Opção 2</option>
-      <option value="opcao3">Opção 3</option>
+    <select id="opcoes" class="full-width-select" [(ngModel)]="selectedUnidade" disabled>
+      <option *ngFor="let unidade of unidades" [value]="unidade.id">{{ unidade.sigla }}</option>
     </select>
   </div>
+
   <div class="input-container">
     <span class="Id">Id</span>
-    <input type="text" class="disabledInput" value="59f28fd7" disabled>
+    <input type="text" class="disabledInput" value="59f28fd7" disabled [(ngModel)]="id">
   </div>
   <div class="input-container">
     <span class="name">Nome*</span>
-    <input type="text" placeholder="Informe os dados para o campo Nome" name="nomeInput">
+    <input type="text" placeholder="Informe os dados para o campo Nome" name="nomeInput" [(ngModel)]="nome">
   </div>
   <div class="input-container">
     <span class="descrition">GTIN*</span>
-    <input type="text" placeholder="Informe os dados para o campo GTIN" name="descricaoInput">
+    <input type="text" placeholder="Informe os dados para o campo GTIN" name="descricaoInput" [(ngModel)]="gtin">
   </div>
   <div class="input-container">
     <span class="descrition">Valor*</span>
-    <input type="number" placeholder="Informe os dados para o campo Valor" name="descricaoInput">
+    <input type="number" placeholder="Informe os dados para o campo Valor" name="descricaoInput" [(ngModel)]="valor">
   </div>
   <div class="input-container">
     <span class="descrition">Data de cadastro*</span>
-    <input type="date" name="descricaoInput">
+    <input type="date" name="descricaoInput" [(ngModel)]="dataCadastro">
   </div>
   <div class="field">
     <span>*field is mandatory</span>
@@ -50,5 +51,5 @@
 </mat-dialog-content>
 <mat-dialog-actions class="buttonsContainer">
   <button mat-dialog-close class="x"><mat-icon fontIcon="cancel"></mat-icon></button>
-  <button mat-dialog-close cdkFocusInitial class="y"><mat-icon fontIcon="check"></mat-icon></button>
+  <button cdkFocusInitial class="y" (click)="clickConfirm()"><mat-icon fontIcon="check"></mat-icon></button>
 </mat-dialog-actions>
